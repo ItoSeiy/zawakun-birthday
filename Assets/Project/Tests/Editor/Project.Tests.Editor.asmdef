@@ -1,0 +1,26 @@
+{
+    "name": "Project.Tests.Editor",
+    "rootNamespace": "Project.Tests.Editor",
+    "references": [
+        "GUID:8ccf63533459a7d4291829f518dfa368",
+        "GUID:791f30d4fa4d0476a9c7512f7a0e43e2",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:2359c074672083046b6ff6b309700f8e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

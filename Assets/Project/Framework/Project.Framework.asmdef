@@ -1,0 +1,25 @@
+{
+    "name": "Project.Framework",
+    "rootNamespace": "Project.Framework",
+    "references": [
+        "GUID:ba69d678322409e4b89c5c28d57cb2ac",
+        "GUID:9d4b70e803e8fc348854c9a8eaab9427",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:2359c074672083046b6ff6b309700f8e",
+        "GUID:45481c1a5703e4b4db8cfbe8316a40db",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

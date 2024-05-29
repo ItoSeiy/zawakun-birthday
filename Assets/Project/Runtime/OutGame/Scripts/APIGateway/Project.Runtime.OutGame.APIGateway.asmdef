@@ -1,0 +1,17 @@
+{
+    "name": "Project.Runtime.OutGame.APIGateway",
+    "rootNamespace": "Project.Runtime.OutGame.APIGateway",
+    "references": [
+        "GUID:8ccf63533459a7d4291829f518dfa368",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

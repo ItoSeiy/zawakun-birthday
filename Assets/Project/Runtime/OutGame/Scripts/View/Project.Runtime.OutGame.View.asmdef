@@ -1,0 +1,23 @@
+{
+    "name": "Project.Runtime.OutGame.View",
+    "rootNamespace": "Project.Runtime.OutGame.View",
+    "references": [
+        "GUID:8ccf63533459a7d4291829f518dfa368",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:2359c074672083046b6ff6b309700f8e",
+        "GUID:afbe023a79a09493a8188ee96a9d00b4",
+        "GUID:d554c6f8ba43b4243a0ae96056e61fe3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

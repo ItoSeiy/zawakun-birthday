@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd4d6dec9974f11ba4b078ca3a0e1e, type: 3}
+  m_Name: PaletteStore
+  m_EditorClassIdentifier: 
+  _colorPalette:
+    _entries:
+      _keys:
+      - 3ef5daa9-1188-4f97-a933-5f5c97e8e4b2
+      - be0a87e7-0486-4de9-824f-110597d3208a
+      - 218ce5ae-d00c-4d61-93cd-f3573ad247db
+      - 8a61abe8-56ab-4bb3-b33c-e5f261c7a54b
+      - a7ede8a4-1d37-4ee4-8504-1cd19d5ea188
+      - 12f4b4b5-9941-4634-8ecd-828bbe9dd926
+      _values:
+      - _id: 3ef5daa9-1188-4f97-a933-5f5c97e8e4b2
+        _name:
+          _value: Black-Design
+        _values:
+          _keys:
+          - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+          - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+          - _value: {r: 0.09019608, g: 0.09019608, b: 0.09019608, a: 1}
+      - _id: be0a87e7-0486-4de9-824f-110597d3208a
+        _name:
+          _value: White-Design
+        _values:
+          _keys:
+          - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+          - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+          - _value: {r: 0.91764706, g: 0.91764706, b: 0.91764706, a: 1}
+      - _id: 218ce5ae-d00c-4d61-93cd-f3573ad247db
+        _name:
+          _value: Black-Alpha
+        _values:
+          _keys:
+          - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+          - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+          - _value: {r: 0.09019608, g: 0.09019608, b: 0.09019608, a: 0.69803923}
+      - _id: 8a61abe8-56ab-4bb3-b33c-e5f261c7a54b
+        _name:
+          _value: Transparent
+        _values:
+          _keys:
+          - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+          - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+          - _value: {r: 1, g: 1, b: 1, a: 0}
+      - _id: a7ede8a4-1d37-4ee4-8504-1cd19d5ea188
+        _name:
+          _value: White
+        _values:
+          _keys:
+          - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+          - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+      - _id: 12f4b4b5-9941-4634-8ecd-828bbe9dd926
+        _name:
+          _value: Black
+        _values:
+          _keys:
+          - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+          - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+          - _value: {r: 0, g: 0, b: 0, a: 1}
+    _themes:
+      _keys:
+      - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+      - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+      _values:
+      - _id: 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+        _name:
+          _value: LightMode
+      - _id: f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+        _name:
+          _value: DarkMode
+    _entryOrders:
+      _ids:
+      - 3ef5daa9-1188-4f97-a933-5f5c97e8e4b2
+      - 218ce5ae-d00c-4d61-93cd-f3573ad247db
+      - be0a87e7-0486-4de9-824f-110597d3208a
+      - 8a61abe8-56ab-4bb3-b33c-e5f261c7a54b
+      - a7ede8a4-1d37-4ee4-8504-1cd19d5ea188
+      - 12f4b4b5-9941-4634-8ecd-828bbe9dd926
+    _themeOrders:
+      _ids:
+      - f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+      - 1cdbd549-64f1-4357-aeea-5c3da862cbfc
+    _activeThemeId: f8cf3d9b-4dd2-448f-96a8-c9e4dc1f7f1e
+  _gradientPalette:
+    _entries:
+      _keys: []
+      _values: []
+    _themes:
+      _keys:
+      - edcb03fd-c349-4fb4-b608-62e672819f40
+      _values:
+      - _id: edcb03fd-c349-4fb4-b608-62e672819f40
+        _name:
+          _value: Default
+    _entryOrders:
+      _ids: []
+    _themeOrders:
+      _ids:
+      - edcb03fd-c349-4fb4-b608-62e672819f40
+    _activeThemeId: edcb03fd-c349-4fb4-b608-62e672819f40
+  _characterStylePalette:
+    _entries:
+      _keys: []
+      _values: []
+    _themes:
+      _keys:
+      - e476c0c0-b41d-4fc5-84c4-406fd4880548
+      _values:
+      - _id: e476c0c0-b41d-4fc5-84c4-406fd4880548
+        _name:
+          _value: Default
+    _entryOrders:
+      _ids: []
+    _themeOrders:
+      _ids:
+      - e476c0c0-b41d-4fc5-84c4-406fd4880548
+    _activeThemeId: e476c0c0-b41d-4fc5-84c4-406fd4880548
+  _characterStyleTMPPalette:
+    _entries:
+      _keys: []
+      _values: []
+    _themes:
+      _keys:
+      - 2e099965-66d6-4b98-8245-679e2bcbb497
+      - 32dccb09-5607-4990-b037-0cdace334470
+      _values:
+      - _id: 2e099965-66d6-4b98-8245-679e2bcbb497
+        _name:
+          _value: DarkMode
+      - _id: 32dccb09-5607-4990-b037-0cdace334470
+        _name:
+          _value: LightMode
+    _entryOrders:
+      _ids: []
+    _themeOrders:
+      _ids:
+      - 2e099965-66d6-4b98-8245-679e2bcbb497
+      - 32dccb09-5607-4990-b037-0cdace334470
+    _activeThemeId: 2e099965-66d6-4b98-8245-679e2bcbb497
+  _missingEntryErrorLevel: 1

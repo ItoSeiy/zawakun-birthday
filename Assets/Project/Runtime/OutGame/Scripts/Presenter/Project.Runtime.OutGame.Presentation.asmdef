@@ -1,0 +1,27 @@
+{
+    "name": "Project.Runtime.OutGame.Presentation",
+    "rootNamespace": "Project.Runtime.OutGame.Presentation",
+    "references": [
+        "GUID:8ccf63533459a7d4291829f518dfa368",
+        "GUID:d554c6f8ba43b4243a0ae96056e61fe3",
+        "GUID:791f30d4fa4d0476a9c7512f7a0e43e2",
+        "GUID:4a8454838cb7140349c78edc3fa843d8",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:2359c074672083046b6ff6b309700f8e",
+        "GUID:45481c1a5703e4b4db8cfbe8316a40db"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,25 @@
+{
+    "name": "Project.Runtime.OutGame.Composition",
+    "rootNamespace": "Project.Runtime.OutGame.Composition",
+    "references": [
+        "GUID:8ccf63533459a7d4291829f518dfa368",
+        "GUID:afbe023a79a09493a8188ee96a9d00b4",
+        "GUID:4a8454838cb7140349c78edc3fa843d8",
+        "GUID:d554c6f8ba43b4243a0ae96056e61fe3",
+        "GUID:791f30d4fa4d0476a9c7512f7a0e43e2",
+        "GUID:5349fa5c1c65843f3af1b740056d62ea",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:2359c074672083046b6ff6b309700f8e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
