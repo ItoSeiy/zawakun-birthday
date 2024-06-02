@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Project.Framework.OutGame;
 using UnityEngine;
 using UnityEngine.UI;
-using File = UnityEngine.Windows.File;
 
 namespace Project.Runtime.OutGame.View
 {
