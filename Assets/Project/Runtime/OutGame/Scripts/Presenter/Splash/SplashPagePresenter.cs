@@ -31,8 +31,8 @@ namespace Project.Runtime.OutGame.Presentation
         private async UniTaskVoid Load()
         {
             await (TransitionService.RegisterAllSheets(CancellationTokenSource.Token), UniTask.WaitUntil(() => _didPush));
-            
-            // ここで次の画面に遷移する
+
+            TransitionService.PushMainPage();
         }
     }
 }

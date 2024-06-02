@@ -29,7 +29,7 @@ namespace Project.Framework.Const
         ///     デフォルトの解像度
         ///     CanvasReferenceResolutionなどで使う
         /// </summary>
-        public static Vector2 DefaultResolution => new(1080f, 1920f);
+        public static Vector2 DefaultResolution => new(1920f, 1080f);
 
         /// <summary>
         ///     フォントサイズの取得

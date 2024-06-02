@@ -17,10 +17,12 @@ namespace Project.Runtime.OutGame.Composition
     public sealed partial class TransitionService : ITransitionService
     {
         private readonly SplashPagePresenterFactory _splashPagePresenterFactory;
+        private readonly MainPagePresenterFactory _mainPagePresenterFactory;
 
-        public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory)
+        public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory, MainPagePresenterFactory mainPagePresenterFactory)
         {
             _splashPagePresenterFactory = splashPagePresenterFactory;
+            _mainPagePresenterFactory = mainPagePresenterFactory;
         }
 
         private static SheetContainer RootSheetContainer => SheetContainer.Find("RootSheetContainer");
@@ -39,7 +41,17 @@ namespace Project.Runtime.OutGame.Composition
                     OnPagePresenterCreated(_splashPagePresenterFactory.Create(page, this), page);
                 });
         }
-        
+
+        public void PushMainPage()
+        {
+            RootPageContainer.Push<MainPage>(ResourceKeys.Prefabs.UI.GetPageKey<MainPage>(), true,
+                onLoad: x =>
+                {
+                    var page = x.page;
+                    OnPagePresenterCreated(_mainPagePresenterFactory.Create(page, this), page);
+                });
+        }
+
 
         /// <summary>
         ///     モーダル、ページのPop時 (モーダルを閉じる)

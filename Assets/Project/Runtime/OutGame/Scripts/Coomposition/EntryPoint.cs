@@ -20,10 +20,12 @@ namespace Project.Runtime.OutGame.Composition
 
             // Presenter Factories
             var splashPagePresenterFactory = new SplashPagePresenterFactory();
+            var mainPagePresenterFactory = new MainPagePresenterFactory();
 
             // Transition Services
             var transitionService = new TransitionService(
-                splashPagePresenterFactory
+                splashPagePresenterFactory,
+                mainPagePresenterFactory
             );
 
             // 最初のページに遷移
