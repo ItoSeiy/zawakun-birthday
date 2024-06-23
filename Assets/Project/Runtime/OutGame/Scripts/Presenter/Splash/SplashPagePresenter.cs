@@ -1,6 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using Project.Framework.Utils;
 using Project.Runtime.OutGame.Presentation;
+using Project.Runtime.OutGame.UseCase;
 using Project.Runtime.OutGame.View;
+using UnityEngine;
 
 namespace Project.Runtime.OutGame.Presentation
 {
@@ -32,7 +36,15 @@ namespace Project.Runtime.OutGame.Presentation
         {
             await (TransitionService.RegisterAllSheets(CancellationTokenSource.Token), UniTask.WaitUntil(() => _didPush));
 
-            TransitionService.PushMainPage();
+            var userName = PlayerPrefs.GetString(PlayerPrefsConst.UserKey, string.Empty);
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                TransitionService.PushLoginPage();
+            }
+            else
+            {
+                CustomDebug.Log("進捗を取得して、各ステージに移行");
+            }
         }
     }
 }

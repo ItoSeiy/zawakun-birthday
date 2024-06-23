@@ -43,5 +43,23 @@ namespace Project.Framework.Utils
         {
             Debug.LogError(message, context);
         }
+
+        [Conditional("DEBUG")]
+        public static void Log(object message)
+        {
+            Debug.Log(message);
+        }
+
+        [Conditional("DEBUG")]
+        public static void LogWarning(object message)
+        {
+            Debug.LogWarning(message);
+        }
+
+        [Conditional("DEBUG")]
+        public static void LogError(object message)
+        {
+            Debug.LogError(message);
+        }
     }
 }
