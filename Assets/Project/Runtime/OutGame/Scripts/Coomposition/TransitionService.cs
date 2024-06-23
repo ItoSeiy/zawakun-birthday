@@ -17,12 +17,12 @@ namespace Project.Runtime.OutGame.Composition
     public sealed partial class TransitionService : ITransitionService
     {
         private readonly SplashPagePresenterFactory _splashPagePresenterFactory;
-        private readonly MainPagePresenterFactory _mainPagePresenterFactory;
+        private readonly LoginPagePresenterFactory _loginPagePresenterFactory;
 
-        public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory, MainPagePresenterFactory mainPagePresenterFactory)
+        public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory, LoginPagePresenterFactory loginPagePresenterFactory)
         {
             _splashPagePresenterFactory = splashPagePresenterFactory;
-            _mainPagePresenterFactory = mainPagePresenterFactory;
+            _loginPagePresenterFactory = loginPagePresenterFactory;
         }
 
         private static SheetContainer RootSheetContainer => SheetContainer.Find("RootSheetContainer");
@@ -42,13 +42,13 @@ namespace Project.Runtime.OutGame.Composition
                 });
         }
 
-        public void PushMainPage()
+        public void PushLoginPage()
         {
-            RootPageContainer.Push<MainPage>(ResourceKeys.Prefabs.UI.GetPageKey<MainPage>(), true,
+            RootPageContainer.Push<LoginPage>(ResourceKeys.Prefabs.UI.GetPageKey<LoginPage>(), true,
                 onLoad: x =>
                 {
                     var page = x.page;
-                    OnPagePresenterCreated(_mainPagePresenterFactory.Create(page, this), page);
+                    OnPagePresenterCreated(_loginPagePresenterFactory.Create(page, this), page);
                 });
         }
 

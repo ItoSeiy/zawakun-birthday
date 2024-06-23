@@ -8,7 +8,7 @@ namespace Project.Runtime.OutGame.Presentation
     {
         void PushSplashPage();
         
-        void PushMainPage();
+        void PushLoginPage();
 
         void PopCommandExecuted();
 

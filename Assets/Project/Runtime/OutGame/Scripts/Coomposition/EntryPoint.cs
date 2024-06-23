@@ -1,4 +1,7 @@
+using Project.Runtime.OutGame.APIGateway;
+using Project.Runtime.OutGame.Model;
 using Project.Runtime.OutGame.Presentation;
+using Project.Runtime.OutGame.UseCase;
 using UnityEngine;
 
 namespace Project.Runtime.OutGame.Composition
@@ -13,19 +16,22 @@ namespace Project.Runtime.OutGame.Composition
         private void Start()
         {
             // APIGateways
+            var fileAPIGateway = new FileApiGateway();
 
             // Models
+            var userModel = new UserModel();
 
             // UseCases
+            var loginUseCase = new LoginUseCase(userModel, fileAPIGateway);
 
             // Presenter Factories
             var splashPagePresenterFactory = new SplashPagePresenterFactory();
-            var mainPagePresenterFactory = new MainPagePresenterFactory();
+            var loginPagePresenterFactory = new LoginPagePresenterFactory(loginUseCase);
 
             // Transition Services
             var transitionService = new TransitionService(
                 splashPagePresenterFactory,
-                mainPagePresenterFactory
+                loginPagePresenterFactory
             );
 
             // 最初のページに遷移
