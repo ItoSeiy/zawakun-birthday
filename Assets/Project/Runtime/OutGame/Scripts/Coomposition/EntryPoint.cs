@@ -8,6 +8,9 @@ namespace Project.Runtime.OutGame.Composition
 {
     public sealed class EntryPoint : MonoBehaviour
     {
+        [SerializeField]
+        private LetterContents _letterContents;
+
         private void Awake()
         {
             Application.targetFrameRate = 60;
@@ -26,7 +29,9 @@ namespace Project.Runtime.OutGame.Composition
 
             // Presenter Factories
             var splashPagePresenterFactory = new SplashPagePresenterFactory();
-            var loginPagePresenterFactory = new LoginPagePresenterFactory(loginUseCase);
+            var loginPagePresenterFactory = new LoginPagePresenterFactory(
+                _letterContents.GetContentsParent(ContentsParentType.Login),
+                loginUseCase);
 
             // Transition Services
             var transitionService = new TransitionService(

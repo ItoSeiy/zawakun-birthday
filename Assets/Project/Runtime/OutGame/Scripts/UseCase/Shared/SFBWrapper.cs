@@ -16,5 +16,11 @@ namespace Project.Runtime.OutGame.UseCase
             path = string.Empty;
             return false;
         }
+
+        public static bool Save(out string path)
+        {
+            path = StandaloneFileBrowser.SaveFilePanel("Title", "", "sample", "txt");
+            return string.IsNullOrWhiteSpace(path) == false;
+        }
     }
 }

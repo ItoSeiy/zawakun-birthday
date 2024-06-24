@@ -4,12 +4,15 @@ using Project.Runtime.OutGame.APIGateway;
 using Project.Runtime.OutGame.Model;
 using Project.Runtime.OutGame.UseCase;
 using Project.Runtime.OutGame.View;
-using SFB;
+using UnityEngine;
 
 namespace Project.Development
 {
     public class LoginPageDevelopment : AppViewDevelopment<LoginView, LoginViewState>
     {
+        [SerializeField]
+        private LetterContents _letterContents;
+
         private LoginUseCase _useCase;
 
         protected override bool UseLocalization { get; }
@@ -21,13 +24,22 @@ namespace Project.Development
             _useCase = new LoginUseCase(model, fileApiGateway);
         }
 
-        protected override void ViewDidSetup(LoginViewState state)
+        protected override async void ViewDidSetup(LoginViewState state)
         {
-        }
+            var contentsParent = _letterContents.GetContentsParent(ContentsParentType.Login);
+            var contents = contentsParent.GetContents(ContentsType.LoginEnterUseName);
 
-        private async UniTask TrySetName()
-        {
-            await _useCase.FetchUserModel();
+            {
+                await UniTask.WaitForSeconds(contents.WaitForSeconds);
+                await _useCase.SaveEnterUserNameLetterAsync(contents.Text);
+            }
+
+            {
+                contents = contentsParent.GetContents(ContentsType.LoginGreeting);
+                await UniTask.WaitForSeconds(contents.WaitForSeconds);
+
+                await _useCase.FetchUserModelAsync(contents.MatchPattern, contents.FallBackText);
+            }
         }
     }
 }
