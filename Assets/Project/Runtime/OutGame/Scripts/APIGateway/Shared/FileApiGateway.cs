@@ -10,7 +10,7 @@ namespace Project.Runtime.OutGame.APIGateway
     {
         public async UniTask<string> GetFileText(string path)
         {
-            var webRequest = new UnityWebRequest(path);
+            var webRequest = UnityWebRequest.Get(path);
 
             await webRequest.SendWebRequest();
 

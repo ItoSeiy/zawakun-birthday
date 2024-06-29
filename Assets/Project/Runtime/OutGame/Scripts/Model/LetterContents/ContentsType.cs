@@ -7,7 +7,7 @@ namespace Project.Runtime.OutGame.Model
 
     public enum ContentsType
     {
-        LoginEnterUseName,
+        LoginCheck,
         LoginGreeting
     }
 

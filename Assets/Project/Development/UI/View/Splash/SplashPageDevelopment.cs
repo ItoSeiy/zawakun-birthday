@@ -5,39 +5,35 @@ using Project.Framework.Utils;
 using Project.Runtime.OutGame.UseCase;
 using Project.Runtime.OutGame.View;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Development
 {
     public class SplashPageDevelopment : AppViewDevelopment<SplashView, SplashViewState>
     {
         [SerializeField]
-        private bool _setUserData;
+        private bool _setLoggedIn;
 
         protected override bool UseLocalization { get; }
 
         protected override void InitializeView(SplashView view)
         {
-            if (_setUserData)
+            if (_setLoggedIn)
             {
-                PlayerPrefs.SetString(PlayerPrefsConst.UserKey, "ざわ君");
+                PlayerPrefs.SetInt(PlayerPrefsConst.IsLoggedIn, 1);
             }
             else
             {
-                PlayerPrefs.DeleteKey(PlayerPrefsConst.UserKey);
+                PlayerPrefs.DeleteKey(PlayerPrefsConst.IsLoggedIn);
             }
         }
 
         protected override void ViewDidSetup(SplashViewState state)
         {
-            var userName = PlayerPrefs.GetString(PlayerPrefsConst.UserKey, string.Empty);
-            if (string.IsNullOrWhiteSpace(userName))
-            {
-                CustomDebug.Log($"ログイン画面へ遷移");
-            }
-            else
-            {
-                CustomDebug.Log($"ステージ選択画面へ遷移, UserName: {userName}");
-            }
+            var loggedInInt = PlayerPrefs.GetInt(PlayerPrefsConst.IsLoggedIn, 0);
+            var isLoggedIn = loggedInInt == 1;
+
+            CustomDebug.Log(isLoggedIn ? "ステージ選択画面へ繊維" : "ログイン画面へ遷移");
         }
     }
 }

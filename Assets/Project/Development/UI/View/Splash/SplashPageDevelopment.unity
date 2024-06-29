@@ -460,7 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _view: {fileID: 1773318058}
   _loadingCover: {fileID: 0}
-  _setUserData: 0
+  _setLoggedIn: 0
 --- !u!1001 &9211122783774159748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -563,6 +563,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8371090910769495062, guid: 479f25d450d9d429e8ff2585bbe0b9e5, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371090910769495062, guid: 479f25d450d9d429e8ff2585bbe0b9e5, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

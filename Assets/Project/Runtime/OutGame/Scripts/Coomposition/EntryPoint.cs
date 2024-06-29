@@ -22,10 +22,9 @@ namespace Project.Runtime.OutGame.Composition
             var fileAPIGateway = new FileApiGateway();
 
             // Models
-            var userModel = new UserModel();
 
             // UseCases
-            var loginUseCase = new LoginUseCase(userModel, fileAPIGateway);
+            var loginUseCase = new LoginUseCase(fileAPIGateway);
 
             // Presenter Factories
             var splashPagePresenterFactory = new SplashPagePresenterFactory();

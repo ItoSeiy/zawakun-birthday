@@ -53,16 +53,19 @@ namespace Project.Runtime.OutGame.Model
             public class Contents
             {
                 [SerializeField]
+                private string _title;
+
+                [SerializeField]
                 private ContentsSfbType _sfbType;
 
                 [SerializeField]
                 private ContentsType _contentsType;
 
-                [ShowIf(nameof(_sfbType), ContentsSfbType.Save)]
                 [SerializeField]
                 private float _waitForSeconds;
 
                 [ShowIf(nameof(_sfbType), ContentsSfbType.Open)]
+                [AllowNesting]
                 [SerializeField]
                 private string _matchPattern;
 
@@ -71,9 +74,16 @@ namespace Project.Runtime.OutGame.Model
                 private string _text;
 
                 [ShowIf(nameof(_sfbType), ContentsSfbType.Open)]
+                [AllowNesting]
+                [SerializeField]
+                private string _fallBackTextTitle;
+
+                [ShowIf(nameof(_sfbType), ContentsSfbType.Open)]
                 [ResizableTextArea]
                 [SerializeField]
                 private string _fallBackText;
+
+                public string Title => _title;
 
                 public ContentsSfbType SfbType => _sfbType;
 
@@ -84,6 +94,8 @@ namespace Project.Runtime.OutGame.Model
                 public string MatchPattern => _matchPattern;
 
                 public string Text => _text;
+
+                public string FallBackTextTitle => _fallBackTextTitle;
 
                 public string FallBackText => _fallBackText;
             }

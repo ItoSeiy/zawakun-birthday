@@ -13,10 +13,10 @@ namespace Project.Runtime.OutGame.Presentation
     /// </summary>
     public sealed class SplashPagePresenter : PagePresenterBase<SplashPage, SplashView, SplashViewState>
     {
-
         private bool _didPush;
 
-        public SplashPagePresenter(SplashPage view, ITransitionService transitionService) : base(view, transitionService)
+        public SplashPagePresenter(SplashPage view, ITransitionService transitionService) : base(view,
+            transitionService)
         {
         }
 
@@ -34,9 +34,10 @@ namespace Project.Runtime.OutGame.Presentation
 
         private async UniTaskVoid Load()
         {
-            await (TransitionService.RegisterAllSheets(CancellationTokenSource.Token), UniTask.WaitUntil(() => _didPush));
+            await (TransitionService.RegisterAllSheets(CancellationTokenSource.Token),
+                UniTask.WaitUntil(() => _didPush));
 
-            var userName = PlayerPrefs.GetString(PlayerPrefsConst.UserKey, string.Empty);
+            var userName = PlayerPrefs.GetString(PlayerPrefsConst.IsLoggedIn, string.Empty);
             if (string.IsNullOrWhiteSpace(userName))
             {
                 TransitionService.PushLoginPage();
