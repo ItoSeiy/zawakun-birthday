@@ -1,7 +1,5 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Project.Framework.Utils;
-using Project.Runtime.OutGame.Presentation;
 using Project.Runtime.OutGame.UseCase;
 using Project.Runtime.OutGame.View;
 using UnityEngine;
@@ -35,7 +33,8 @@ namespace Project.Runtime.OutGame.Presentation
         private async UniTaskVoid Load()
         {
             await (TransitionService.RegisterAllSheets(CancellationTokenSource.Token),
-                UniTask.WaitUntil(() => _didPush));
+                UniTask.WaitUntil(() => _didPush),
+                UniTask.WaitForSeconds(2f));
 
             var userName = PlayerPrefs.GetString(PlayerPrefsConst.IsLoggedIn, string.Empty);
             if (string.IsNullOrWhiteSpace(userName))

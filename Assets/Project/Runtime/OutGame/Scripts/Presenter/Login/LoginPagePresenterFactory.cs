@@ -17,7 +17,7 @@ namespace Project.Runtime.OutGame.Presentation
 
         public LoginPagePresenter Create(LoginPage view, ITransitionService transitionService)
         {
-            return new LoginPagePresenter(view, transitionService, _loginUseCase);
+            return new LoginPagePresenter(view, transitionService, _loginUseCase, _letterContents);
         }
     }
 }

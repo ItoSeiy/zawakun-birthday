@@ -10,7 +10,15 @@ namespace Project.Runtime.OutGame.UseCase
     {
         public static async UniTask<bool> Save(string textName, string contents)
         {
-            var downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads\";
+            string downloadsPath;
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                downloadsPath = Environment.GetEnvironmentVariable("HOME") + "/Downloads";
+            }
+            else
+            {
+                downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads\";
+            }
 
             var path = Path.Combine(downloadsPath, $"{textName}.txt");
 
