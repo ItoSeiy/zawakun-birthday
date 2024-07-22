@@ -10,15 +10,7 @@ namespace Project.Runtime.OutGame.UseCase
     {
         public static async UniTask<bool> Save(string textName, string contents)
         {
-            string downloadsPath;
-            if (Environment.OSVersion.Platform == PlatformID.Unix)
-            {
-                downloadsPath = Environment.GetEnvironmentVariable("HOME") + "/Downloads";
-            }
-            else
-            {
-                downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads\";
-            }
+            var downloadsPath = GetDownloadFolderPath();
 
             var path = Path.Combine(downloadsPath, $"{textName}.txt");
 
@@ -31,7 +23,13 @@ namespace Project.Runtime.OutGame.UseCase
             try
             {
                 await File.WriteAllTextAsync(path, contents);
-                System.Diagnostics.Process.Start(downloadsPath);
+                await UniTask.Yield();
+
+                var process = System.Diagnostics.Process.Start(downloadsPath);
+
+                await UniTask.Yield();
+                process?.Refresh();
+                await UniTask.Yield();
                 return true;
             }
             catch (Exception e)
@@ -44,7 +42,7 @@ namespace Project.Runtime.OutGame.UseCase
 
         public static bool Open(out string path)
         {
-            var paths = StandaloneFileBrowser.OpenFilePanel("zawa", "", "txt", false);
+            var paths = StandaloneFileBrowser.OpenFilePanel("zawa", GetDownloadFolderPath(), "txt", false);
             if (paths.Length > 0)
             {
                 path = paths[0];
@@ -53,6 +51,16 @@ namespace Project.Runtime.OutGame.UseCase
 
             path = string.Empty;
             return false;
+        }
+
+        private static string GetDownloadFolderPath()
+        {
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                return Environment.GetEnvironmentVariable("HOME") + "/Downloads";
+            }
+
+            return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads\";
         }
     }
 }

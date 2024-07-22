@@ -34,10 +34,19 @@ namespace Project.Runtime.OutGame.Presentation
         {
             await (TransitionService.RegisterAllSheets(CancellationTokenSource.Token),
                 UniTask.WaitUntil(() => _didPush),
-                UniTask.WaitForSeconds(2f));
+                UniTask.WaitForSeconds(1.5f));
 
-            var userName = PlayerPrefs.GetString(PlayerPrefsConst.IsLoggedIn, string.Empty);
-            if (string.IsNullOrWhiteSpace(userName))
+            var isClearedInt = PlayerPrefs.GetInt(PlayerPrefsConst.Bool.IsClearedAll, 0);
+            var isCleared = isClearedInt == 1;
+
+            var loggedInInt = PlayerPrefs.GetInt(PlayerPrefsConst.Bool.IsLoggedIn, 0);
+            var isLoggedIn = loggedInInt == 1;
+
+            if (isCleared)
+            {
+                CustomDebug.Log("クリア画面に移行。");
+            }
+            else if (isLoggedIn == false)
             {
                 TransitionService.PushLoginPage();
             }

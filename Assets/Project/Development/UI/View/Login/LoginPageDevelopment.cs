@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Project.Development
 {
-    public class LoginPageDevelopment : AppViewDevelopment<LoginView, LoginViewState>
+    public class LoginPageDevelopment : AppViewDevelopment<PostLetterView, PostLetterViewState>
     {
         [SerializeField]
         private LetterContents _letterContents;
@@ -23,7 +23,7 @@ namespace Project.Development
 
         protected override bool UseLocalization { get; }
 
-        protected override void InitializeView(LoginView view)
+        protected override void InitializeView(PostLetterView view)
         {
             var fileApiGateway = new FileApiGateway();
             _useCase = new LoginUseCase(fileApiGateway);
@@ -32,7 +32,7 @@ namespace Project.Development
             _contents = _contentsParent.GetContents(ContentsType.LoginCheck);
         }
 
-        protected override async void ViewDidSetup(LoginViewState state)
+        protected override async void ViewDidSetup(PostLetterViewState state)
         {
             state.IsLetterActive.Value = false;
             state.IsPostActive.Value = false;
@@ -52,13 +52,13 @@ namespace Project.Development
             }).AddTo(this);
         }
 
-        private async UniTask ActiveLetterAsync(LoginViewState state)
+        private async UniTask ActiveLetterAsync(PostLetterViewState state)
         {
             await UniTask.WaitForSeconds(_contents.WaitForSeconds);
             state.IsLetterActive.Value = true;
         }
 
-        private async UniTask ExecuteCurrentLetterContentsAsync(LoginViewState state)
+        private async UniTask ExecuteCurrentLetterContentsAsync(PostLetterViewState state)
         {
             switch (_contents.ContentsType)
             {
@@ -81,7 +81,7 @@ namespace Project.Development
             state.IsPostActive.Value = true;
         }
 
-        private async UniTask ExecuteCurrentPostContentsAsync(LoginViewState state)
+        private async UniTask ExecuteCurrentPostContentsAsync(PostLetterViewState state)
         {
             switch (_contents.ContentsType)
             {

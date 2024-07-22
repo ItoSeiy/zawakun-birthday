@@ -20,17 +20,17 @@ namespace Project.Development
         {
             if (_setLoggedIn)
             {
-                PlayerPrefs.SetInt(PlayerPrefsConst.IsLoggedIn, 1);
+                PlayerPrefs.SetInt(PlayerPrefsConst.Bool.IsLoggedIn, 1);
             }
             else
             {
-                PlayerPrefs.DeleteKey(PlayerPrefsConst.IsLoggedIn);
+                PlayerPrefs.DeleteKey(PlayerPrefsConst.Bool.IsLoggedIn);
             }
         }
 
         protected override void ViewDidSetup(SplashViewState state)
         {
-            var loggedInInt = PlayerPrefs.GetInt(PlayerPrefsConst.IsLoggedIn, 0);
+            var loggedInInt = PlayerPrefs.GetInt(PlayerPrefsConst.Bool.IsLoggedIn, 0);
             var isLoggedIn = loggedInInt == 1;
 
             CustomDebug.Log(isLoggedIn ? "ステージ選択画面へ繊維" : "ログイン画面へ遷移");

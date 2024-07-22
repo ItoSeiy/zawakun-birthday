@@ -6,40 +6,40 @@ using UnityEngine;
 
 namespace Project.Runtime.OutGame.View
 {
-    public sealed class LoginView : AppView<LoginViewState>
+    public sealed class PostLetterView : AppView<PostLetterViewState>
     {
-        [SerializeField]
-        private SimpleButton _letter;
-
         [SerializeField]
         private SimpleButton _post;
 
-        protected override UniTask<LoginViewState> Setup()
+        [SerializeField]
+        private SimpleButton _letter;
+
+        protected override UniTask<PostLetterViewState> Setup()
         {
-            var state = new LoginViewState();
+            var state = new PostLetterViewState();
             var iViewState = (ILoginViewState)state;
 
-            _letter.SetOnClickDestination(() => iViewState.InvokeLetterClicked());
             _post.SetOnClickDestination(() => iViewState.InvokePostClicked());
+            _letter.SetOnClickDestination(() => iViewState.InvokeLetterClicked());
 
-            state.IsLetterActive.Subscribe(SetLetterActive).AddTo(this);
             state.IsPostActive.Subscribe(SetPostActive).AddTo(this);
+            state.IsLetterActive.Subscribe(SetLetterActive).AddTo(this);
 
             return UniTask.FromResult(state);
-        }
-
-        private void SetLetterActive(bool active)
-        {
-            _letter.gameObject.SetActive(active);
         }
 
         private void SetPostActive(bool active)
         {
             _post.gameObject.SetActive(active);
         }
+
+        private void SetLetterActive(bool active)
+        {
+            _letter.gameObject.SetActive(active);
+        }
     }
 
-    public sealed class LoginViewState : AppViewState, ILoginViewState
+    public sealed class PostLetterViewState : AppViewState, ILoginViewState
     {
         void ILoginViewState.InvokeLetterClicked()
         {

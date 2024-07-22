@@ -19,7 +19,8 @@ namespace Project.Runtime.OutGame.Composition
         private readonly SplashPagePresenterFactory _splashPagePresenterFactory;
         private readonly LoginPagePresenterFactory _loginPagePresenterFactory;
 
-        public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory, LoginPagePresenterFactory loginPagePresenterFactory)
+        public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory,
+            LoginPagePresenterFactory loginPagePresenterFactory)
         {
             _splashPagePresenterFactory = splashPagePresenterFactory;
             _loginPagePresenterFactory = loginPagePresenterFactory;
@@ -35,7 +36,8 @@ namespace Project.Runtime.OutGame.Composition
         public void PushSplashPage()
         {
             RootPageContainer.Push<SplashPage>(ResourceKeys.Prefabs.UI.GetPageKey<SplashPage>(), true,
-                onLoad: x =>
+                onLoad:
+                x =>
                 {
                     var page = x.page;
                     OnPagePresenterCreated(_splashPagePresenterFactory.Create(page, this), page);
@@ -44,7 +46,8 @@ namespace Project.Runtime.OutGame.Composition
 
         public void PushLoginPage()
         {
-            RootPageContainer.Push<LoginPage>(ResourceKeys.Prefabs.UI.GetPageKey<LoginPage>(), true,
+            RootPageContainer.Push<PostLetterPage>(
+                $"{ResourceKeys.Prefabs.UI.UIPrefix}login{ResourceKeys.Prefabs.UI.PageSuffix}", true,
                 onLoad: x =>
                 {
                     var page = x.page;
@@ -84,9 +87,7 @@ namespace Project.Runtime.OutGame.Composition
         /// </summary>
         public async UniTask RegisterAllSheets(CancellationToken ct)
         {
-            await (
-                UniTask.CompletedTask
-            );
+            await UniTask.CompletedTask;
         }
 
         private ISheetPresenter OnSheetPresenterCreated(ISheetPresenter presenter, Sheet sheet,
@@ -104,7 +105,8 @@ namespace Project.Runtime.OutGame.Composition
         /// <summary>
         ///     ページのプレゼンターの初期化
         /// </summary>
-        private static IPagePresenter OnPagePresenterCreated(IPagePresenter presenter, Page page, bool shouldInitialize = true)
+        private static IPagePresenter OnPagePresenterCreated(IPagePresenter presenter, Page page,
+            bool shouldInitialize = true)
         {
             if (shouldInitialize)
             {

@@ -12,14 +12,14 @@ namespace Project.Runtime.OutGame.Presentation
     /// <summary>
     ///     ゲーム進行のPresenter
     /// </summary>
-    public sealed class LoginPagePresenter : PagePresenterBase<LoginPage, LoginView, LoginViewState>
+    public sealed class LoginPagePresenter : PagePresenterBase<PostLetterPage, PostLetterView, PostLetterViewState>
     {
         private readonly LoginUseCase _loginUseCase;
 
-        private LetterContents.ContentsParent _contentsParent;
+        private readonly LetterContents.ContentsParent _contentsParent;
         private LetterContents.ContentsParent.Contents _contents;
 
-        public LoginPagePresenter(LoginPage view, ITransitionService transitionService, LoginUseCase loginUseCase,
+        public LoginPagePresenter(PostLetterPage view, ITransitionService transitionService, LoginUseCase loginUseCase,
             LetterContents.ContentsParent letterContents) : base(view, transitionService)
         {
             _loginUseCase = loginUseCase;
@@ -28,7 +28,7 @@ namespace Project.Runtime.OutGame.Presentation
             _contents = _contentsParent.GetContents(ContentsType.LoginCheck);
         }
 
-        protected override async UniTask ViewDidSetup(LoginViewState state)
+        protected override async UniTask ViewDidSetup(PostLetterViewState state)
         {
             state.IsLetterActive.Value = false;
             state.IsPostActive.Value = false;
@@ -48,13 +48,13 @@ namespace Project.Runtime.OutGame.Presentation
             }).AddTo(this);
         }
 
-        private async UniTask ActiveLetterAsync(LoginViewState state)
+        private async UniTask ActiveLetterAsync(PostLetterViewState state)
         {
             await UniTask.WaitForSeconds(_contents.WaitForSeconds);
             state.IsLetterActive.Value = true;
         }
 
-        private async UniTask ExecuteCurrentLetterContentsAsync(LoginViewState state)
+        private async UniTask ExecuteCurrentLetterContentsAsync(PostLetterViewState state)
         {
             switch (_contents.ContentsType)
             {
@@ -77,7 +77,7 @@ namespace Project.Runtime.OutGame.Presentation
             state.IsPostActive.Value = true;
         }
 
-        private async UniTask ExecuteCurrentPostContentsAsync(LoginViewState state)
+        private async UniTask ExecuteCurrentPostContentsAsync(PostLetterViewState state)
         {
             switch (_contents.ContentsType)
             {

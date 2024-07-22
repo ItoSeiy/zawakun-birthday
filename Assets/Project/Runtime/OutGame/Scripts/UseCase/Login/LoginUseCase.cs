@@ -22,21 +22,18 @@ namespace Project.Runtime.OutGame.UseCase
                 var text = await _apiGateway.GetFileText(path);
 
                 var match = Regex.Match(text, pattern);
-                if (match.Success)
-                {
-                    PlayerPrefs.SetInt(PlayerPrefsConst.IsLoggedIn, 1);
-                    return true;
-                }
-                else
+                if (!match.Success)
                 {
                     return false;
                 }
+
+                PlayerPrefs.SetInt(PlayerPrefsConst.Int.QuestionProgress, 0);
+                PlayerPrefs.SetInt(PlayerPrefsConst.Bool.IsLoggedIn, 1);
+                return true;
             }
-            else
-            {
-                CustomDebug.LogWarning($"[{nameof(LoginUseCase)}] パス指定がなかったため、読み込まない");
-                return false;
-            }
+
+            CustomDebug.LogWarning($"[{nameof(LoginUseCase)}] パス指定がなかったため、読み込まない");
+            return false;
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3766480406305180121}
   - component: {fileID: 8566285961578401294}
   m_Layer: 0
-  m_Name: pfb_ui_login_page
+  m_Name: pfb_ui_question_page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

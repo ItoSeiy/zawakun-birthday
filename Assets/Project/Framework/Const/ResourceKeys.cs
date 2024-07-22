@@ -13,29 +13,29 @@ namespace Project.Runtime.Const
 
         public static class Prefabs
         {
-            public const string Prefix = "pfb_";
+            public const string PrefabsPrefix = "pfb_";
 
             public static class UI
             {
-                private const string PageSuffix = "_page";
-                private const string SheetSuffix = "_sheet";
-                private const string ModalSuffix = "_modal";
+                public const string PageSuffix = "_page";
+                public const string SheetSuffix = "_sheet";
+                public const string ModalSuffix = "_modal";
 
-                private static string PrefixInternal => $"{Prefix}ui_";
+                public static string UIPrefix => $"{PrefabsPrefix}ui_";
 
                 public static string GetSheetKey<TSheet>() where TSheet : Sheet
                 {
-                    return $"{PrefixInternal}{GetLowerTypeName<TSheet>("Sheet")}{SheetSuffix}";
+                    return $"{UIPrefix}{GetLowerTypeName<TSheet>("Sheet")}{SheetSuffix}";
                 }
 
                 public static string GetPageKey<TPage>() where TPage : Page
                 {
-                    return $"{PrefixInternal}{GetLowerTypeName<TPage>("Page")}{PageSuffix}";
+                    return $"{UIPrefix}{GetLowerTypeName<TPage>("Page")}{PageSuffix}";
                 }
 
                 public static string GetModalKey<TModal>() where TModal : Modal
                 {
-                    return $"{PrefixInternal}{GetLowerTypeName<TModal>("Modal")}{ModalSuffix}";
+                    return $"{UIPrefix}{GetLowerTypeName<TModal>("Modal")}{ModalSuffix}";
                 }
             }
         }

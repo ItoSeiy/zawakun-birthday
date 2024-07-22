@@ -15,7 +15,7 @@ namespace Project.Runtime.OutGame.Presentation
             _loginUseCase = loginUseCase;
         }
 
-        public LoginPagePresenter Create(LoginPage view, ITransitionService transitionService)
+        public LoginPagePresenter Create(PostLetterPage view, ITransitionService transitionService)
         {
             return new LoginPagePresenter(view, transitionService, _loginUseCase, _letterContents);
         }
