@@ -25,12 +25,18 @@ namespace Project.Runtime.OutGame.Composition
 
             // UseCases
             var loginUseCase = new LoginUseCase(fileAPIGateway);
+            var questionUseCase = new QuestionUseCase(fileAPIGateway);
 
             // Presenter Factories
             var splashPagePresenterFactory = new SplashPagePresenterFactory();
+
             var loginPagePresenterFactory = new LoginPagePresenterFactory(
                 _letterContents.GetContentsParent(ContentsParentType.Login),
                 loginUseCase);
+
+            var questionPagePresenterFactory = new QuestionPagePresenterFactory(
+                _letterContents.GetContentsParent(ContentsParentType.Question),
+                questionUseCase);
 
             // Transition Services
             var transitionService = new TransitionService(

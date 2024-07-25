@@ -2,13 +2,23 @@ namespace Project.Runtime.OutGame.Model
 {
     public enum ContentsParentType
     {
-        Login
+        Login,
+        Question
     }
 
     public enum ContentsType
     {
         LoginCheck,
-        LoginGreeting
+        LoginGreeting,
+
+        Question1Save,
+        Question1Open,
+        Question2Save,
+        Question2Open,
+        Question3Save,
+        Question3Open,
+        Question4Save,
+        Question4Open
     }
 
     public enum ContentsSfbType

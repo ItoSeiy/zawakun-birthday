@@ -10,6 +10,11 @@ namespace Project.Runtime.OutGame.UseCase
     {
         private readonly FileApiGateway _apiGateway;
 
+        public QuestionUseCase(FileApiGateway apiGateway)
+        {
+            _apiGateway = apiGateway;
+        }
+
         public async UniTask<bool> OpenAnswerText(string pattern)
         {
             if (SFBWrapper.Open(out var path))
