@@ -41,7 +41,8 @@ namespace Project.Runtime.OutGame.Composition
             // Transition Services
             var transitionService = new TransitionService(
                 splashPagePresenterFactory,
-                loginPagePresenterFactory
+                loginPagePresenterFactory,
+                questionPagePresenterFactory
             );
 
             // 最初のページに遷移

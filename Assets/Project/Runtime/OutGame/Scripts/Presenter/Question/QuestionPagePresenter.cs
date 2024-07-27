@@ -44,11 +44,18 @@ namespace Project.Runtime.OutGame.Presentation
             CustomDebug.Log($"問題Index: {progress} Type: {_contents.ContentsType}");
         }
 
-        protected override async UniTask ViewDidSetup(PostLetterViewState state)
+        protected override UniTask ViewDidSetup(PostLetterViewState state)
         {
             state.IsLetterActive.Value = false;
             state.IsPostActive.Value = false;
 
+            SetupInternal(state).Forget();
+
+            return UniTask.CompletedTask;
+        }
+
+        private async UniTaskVoid SetupInternal(PostLetterViewState state)
+        {
             await ActiveLetterAsync(state);
 
             state.OnLetterClicked.SubscribeAwait(async (_, _) =>
@@ -68,6 +75,12 @@ namespace Project.Runtime.OutGame.Presentation
         {
             await UniTask.WaitForSeconds(_contents.WaitForSeconds);
             state.IsLetterActive.Value = true;
+        }
+
+        private async UniTask ActivePostAsync(PostLetterViewState state)
+        {
+            await UniTask.WaitForSeconds(_contents.WaitForSeconds);
+            state.IsPostActive.Value = true;
         }
 
         private async UniTask ExecuteCurrentLetterContentsAsync(PostLetterViewState state)
@@ -140,8 +153,7 @@ namespace Project.Runtime.OutGame.Presentation
                     }
                     else
                     {
-                        state.IsPostActive.Value = true;
-                        state.IsLetterActive.Value = true;
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
 
                         CustomDebug.Log($"Question1 問題不正解。再度、問題を解く");
                     }
@@ -160,8 +172,7 @@ namespace Project.Runtime.OutGame.Presentation
                     }
                     else
                     {
-                        state.IsPostActive.Value = true;
-                        state.IsLetterActive.Value = true;
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
 
                         CustomDebug.Log($"Question2 問題不正解。再度、問題を解く");
                     }
@@ -173,15 +184,14 @@ namespace Project.Runtime.OutGame.Presentation
                     var success = await _questionUseCase.OpenAnswerText(_contents.MatchPattern);
                     if (success)
                     {
-                        _contents = _contentsParent.GetContents(ContentsType.Question3Save);
+                        _contents = _contentsParent.GetContents(ContentsType.Question4Save);
                         ActiveLetterAsync(state).Forget();
 
                         CustomDebug.Log($"Question3 問題正解。次の問題");
                     }
                     else
                     {
-                        state.IsPostActive.Value = true;
-                        state.IsLetterActive.Value = true;
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
 
                         CustomDebug.Log($"Question3 問題不正解。再度、問題を解く");
                     }
@@ -193,15 +203,11 @@ namespace Project.Runtime.OutGame.Presentation
                     var success = await _questionUseCase.OpenAnswerText(_contents.MatchPattern);
                     if (success)
                     {
-                        _contents = _contentsParent.GetContents(ContentsType.Question4Save);
-                        ActiveLetterAsync(state).Forget();
-
                         CustomDebug.Log($"Question4 問題正解。正解画面に遷移。");
                     }
                     else
                     {
-                        state.IsPostActive.Value = true;
-                        state.IsLetterActive.Value = true;
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
 
                         CustomDebug.Log($"Question4 問題不正解。再度、問題を解く");
                     }

@@ -161,8 +161,16 @@ MonoBehaviour:
   _identifier: 
   _renderingOrder: 0
   _animationContainer:
-    _pushEnterAnimations: []
-    _pushExitAnimations: []
+    _pushEnterAnimations:
+    - _partnerPageIdentifierRegex: 
+      _assetType: 1
+      _animationBehaviour: {fileID: 0}
+      _animationObject: {fileID: 11400000, guid: 10910026f939d49f198d631c4a27f936, type: 2}
+    _pushExitAnimations:
+    - _partnerPageIdentifierRegex: 
+      _assetType: 1
+      _animationBehaviour: {fileID: 0}
+      _animationObject: {fileID: 11400000, guid: e4680cf742140473bac549908c7ee382, type: 2}
     _popEnterAnimations: []
     _popExitAnimations: []
   _rootView: {fileID: 1333171632211829664}

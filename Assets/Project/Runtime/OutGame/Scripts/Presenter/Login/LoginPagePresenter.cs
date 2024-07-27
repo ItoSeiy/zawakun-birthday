@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Project.Framework.OutGame;
 using Project.Framework.Utils;
@@ -33,6 +34,13 @@ namespace Project.Runtime.OutGame.Presentation
             state.IsLetterActive.Value = false;
             state.IsPostActive.Value = false;
 
+            SetupInternal(state).Forget();
+
+            await UniTask.CompletedTask;
+        }
+
+        private async UniTaskVoid SetupInternal(PostLetterViewState state)
+        {
             await ActiveLetterAsync(state);
 
             state.OnLetterClicked.SubscribeAwait(async (_, _) =>
@@ -52,6 +60,12 @@ namespace Project.Runtime.OutGame.Presentation
         {
             await UniTask.WaitForSeconds(_contents.WaitForSeconds);
             state.IsLetterActive.Value = true;
+        }
+
+        private async UniTask ActivePostAsync(PostLetterViewState state)
+        {
+            await UniTask.WaitForSeconds(_contents.WaitForSeconds);
+            state.IsPostActive.Value = true;
         }
 
         private async UniTask ExecuteCurrentLetterContentsAsync(PostLetterViewState state)
@@ -99,8 +113,7 @@ namespace Project.Runtime.OutGame.Presentation
                     {
                         CustomDebug.Log($"再度、ログイン確認");
 
-                        state.IsPostActive.Value = true;
-                        state.IsLetterActive.Value = true;
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
                     }
 
                     break;

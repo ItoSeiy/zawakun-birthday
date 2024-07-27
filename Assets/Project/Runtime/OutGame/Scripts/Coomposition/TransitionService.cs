@@ -16,12 +16,15 @@ namespace Project.Runtime.OutGame.Composition
     {
         private readonly SplashPagePresenterFactory _splashPagePresenterFactory;
         private readonly LoginPagePresenterFactory _loginPagePresenterFactory;
+        private readonly QuestionPagePresenterFactory _questionPagePresenterFactory;
 
         public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory,
-            LoginPagePresenterFactory loginPagePresenterFactory)
+            LoginPagePresenterFactory loginPagePresenterFactory,
+            QuestionPagePresenterFactory questionPagePresenterFactory)
         {
             _splashPagePresenterFactory = splashPagePresenterFactory;
             _loginPagePresenterFactory = loginPagePresenterFactory;
+            _questionPagePresenterFactory = questionPagePresenterFactory;
         }
 
         private static SheetContainer RootSheetContainer => SheetContainer.Find("RootSheetContainer");
@@ -60,7 +63,7 @@ namespace Project.Runtime.OutGame.Composition
                 onLoad: x =>
                 {
                     var page = x.page;
-                    OnPagePresenterCreated(_loginPagePresenterFactory.Create(page, this), page);
+                    OnPagePresenterCreated(_questionPagePresenterFactory.Create(page, this), page);
                 });
         }
 
