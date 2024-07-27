@@ -15,14 +15,17 @@ namespace Project.Runtime.OutGame.Composition
     public sealed partial class TransitionService : ITransitionService
     {
         private readonly SplashPagePresenterFactory _splashPagePresenterFactory;
+        private readonly IntroPagePresenterFactory _introPagePresenterFactory;
         private readonly LoginPagePresenterFactory _loginPagePresenterFactory;
         private readonly QuestionPagePresenterFactory _questionPagePresenterFactory;
 
         public TransitionService(SplashPagePresenterFactory splashPagePresenterFactory,
+            IntroPagePresenterFactory introPagePresenterFactory,
             LoginPagePresenterFactory loginPagePresenterFactory,
             QuestionPagePresenterFactory questionPagePresenterFactory)
         {
             _splashPagePresenterFactory = splashPagePresenterFactory;
+            _introPagePresenterFactory = introPagePresenterFactory;
             _loginPagePresenterFactory = loginPagePresenterFactory;
             _questionPagePresenterFactory = questionPagePresenterFactory;
         }
@@ -42,6 +45,17 @@ namespace Project.Runtime.OutGame.Composition
                 {
                     var page = x.page;
                     OnPagePresenterCreated(_splashPagePresenterFactory.Create(page, this), page);
+                });
+        }
+
+        public void PushIntroPage()
+        {
+            RootPageContainer.Push<IntroPage>(
+                ResourceKeys.Prefabs.UI.GetPageKey<IntroPage>(), true,
+                onLoad: x =>
+                {
+                    var page = x.page;
+                    OnPagePresenterCreated(_introPagePresenterFactory.Create(page, this), page);
                 });
         }
 

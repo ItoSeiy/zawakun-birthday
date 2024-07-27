@@ -30,6 +30,8 @@ namespace Project.Runtime.OutGame.Composition
             // Presenter Factories
             var splashPagePresenterFactory = new SplashPagePresenterFactory();
 
+            var introPagePresenterFactory = new IntroPagePresenterFactory();
+
             var loginPagePresenterFactory = new LoginPagePresenterFactory(
                 _letterContents.GetContentsParent(ContentsParentType.Login),
                 loginUseCase);
@@ -41,6 +43,7 @@ namespace Project.Runtime.OutGame.Composition
             // Transition Services
             var transitionService = new TransitionService(
                 splashPagePresenterFactory,
+                introPagePresenterFactory,
                 loginPagePresenterFactory,
                 questionPagePresenterFactory
             );

@@ -41,7 +41,7 @@ namespace Project.Runtime.OutGame.Presentation
 
             if (isLoggedIn == false)
             {
-                TransitionService.PushLoginPage();
+                TransitionService.PushIntroPage();
             }
             else
             {
