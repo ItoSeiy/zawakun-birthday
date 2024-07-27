@@ -36,23 +36,16 @@ namespace Project.Runtime.OutGame.Presentation
                 UniTask.WaitUntil(() => _didPush),
                 UniTask.WaitForSeconds(1.5f));
 
-            var isClearedInt = PlayerPrefs.GetInt(PlayerPrefsConst.Bool.IsClearedAll, 0);
-            var isCleared = isClearedInt == 1;
-
             var loggedInInt = PlayerPrefs.GetInt(PlayerPrefsConst.Bool.IsLoggedIn, 0);
             var isLoggedIn = loggedInInt == 1;
 
-            if (isCleared)
-            {
-                CustomDebug.Log("クリア画面に移行。");
-            }
-            else if (isLoggedIn == false)
+            if (isLoggedIn == false)
             {
                 TransitionService.PushLoginPage();
             }
             else
             {
-                CustomDebug.Log("進捗を取得して、各ステージに移行");
+                TransitionService.PushQuestionPage();
             }
         }
     }

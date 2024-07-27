@@ -67,7 +67,7 @@ namespace Project.Runtime.OutGame.Presentation
                 }
                 case ContentsType.LoginGreeting:
                 {
-                    await SFBWrapper.Save(_contents.FallBackTextTitle, _contents.FallBackText);
+                    await SFBWrapper.Save(_contents.Title, _contents.Text);
                     break;
                 }
                 default:
@@ -91,6 +91,8 @@ namespace Project.Runtime.OutGame.Presentation
                     var success = await _loginUseCase.OpenLoginCheckText(_contents.MatchPattern);
                     if (success)
                     {
+                        TransitionService.PushQuestionPage();
+
                         CustomDebug.Log($"問題画面へ遷移");
                     }
                     else

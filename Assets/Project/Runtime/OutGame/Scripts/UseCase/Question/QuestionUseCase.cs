@@ -29,13 +29,6 @@ namespace Project.Runtime.OutGame.UseCase
 
                 var progress = PlayerPrefs.GetInt(PlayerPrefsConst.Int.QuestionProgress);
 
-                if (progress == 3)
-                {
-                    CustomDebug.Log($"[{nameof(QuestionUseCase)}] すべてクリアした。");
-                    PlayerPrefs.SetInt(PlayerPrefsConst.Bool.IsClearedAll, 1);
-                    return true;
-                }
-
                 CustomDebug.Log($"[{nameof(QuestionUseCase)}] 問題をクリア 進捗Index: Before{progress} After:{progress + 1}");
                 progress++;
                 PlayerPrefs.SetInt(PlayerPrefsConst.Int.QuestionProgress, progress);

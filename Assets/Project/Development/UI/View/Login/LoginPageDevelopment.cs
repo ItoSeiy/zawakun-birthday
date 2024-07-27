@@ -71,7 +71,7 @@ namespace Project.Development
                 }
                 case ContentsType.LoginGreeting:
                 {
-                    await SFBWrapper.Save(_contents.FallBackTextTitle, _contents.FallBackText);
+                    await SFBWrapper.Save(_contents.Title, _contents.Text);
                     break;
                 }
                 default:

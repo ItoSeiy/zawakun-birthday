@@ -73,16 +73,6 @@ namespace Project.Runtime.OutGame.Model
                 [SerializeField]
                 private string _text;
 
-                [ShowIf(nameof(_sfbType), ContentsSfbType.Open)]
-                [AllowNesting]
-                [SerializeField]
-                private string _fallBackTextTitle;
-
-                [ShowIf(nameof(_sfbType), ContentsSfbType.Open)]
-                [ResizableTextArea]
-                [SerializeField]
-                private string _fallBackText;
-
                 public string Title => _title;
 
                 public ContentsSfbType SfbType => _sfbType;
@@ -94,10 +84,6 @@ namespace Project.Runtime.OutGame.Model
                 public string MatchPattern => _matchPattern;
 
                 public string Text => _text;
-
-                public string FallBackTextTitle => _fallBackTextTitle;
-
-                public string FallBackText => _fallBackText;
             }
         }
     }

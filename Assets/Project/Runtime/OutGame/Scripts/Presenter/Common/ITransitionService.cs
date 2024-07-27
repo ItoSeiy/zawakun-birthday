@@ -7,8 +7,10 @@ namespace Project.Runtime.OutGame.Presentation
     public partial interface ITransitionService
     {
         void PushSplashPage();
-        
+
         void PushLoginPage();
+
+        void PushQuestionPage();
 
         void PopCommandExecuted();
 

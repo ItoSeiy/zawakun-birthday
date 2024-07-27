@@ -3,10 +3,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Project.Framework.OutGame;
 using Project.Runtime.Const;
-using Project.Runtime.OutGame.Model;
 using Project.Runtime.OutGame.Presentation;
 using Project.Runtime.OutGame.View;
-using Project.Runtime.OutGame.Presentation;
 using R3;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Page;
@@ -48,6 +46,17 @@ namespace Project.Runtime.OutGame.Composition
         {
             RootPageContainer.Push<PostLetterPage>(
                 $"{ResourceKeys.Prefabs.UI.UIPrefix}login{ResourceKeys.Prefabs.UI.PageSuffix}", true,
+                onLoad: x =>
+                {
+                    var page = x.page;
+                    OnPagePresenterCreated(_loginPagePresenterFactory.Create(page, this), page);
+                });
+        }
+
+        public void PushQuestionPage()
+        {
+            RootPageContainer.Push<PostLetterPage>(
+                $"{ResourceKeys.Prefabs.UI.UIPrefix}question{ResourceKeys.Prefabs.UI.PageSuffix}", true,
                 onLoad: x =>
                 {
                     var page = x.page;
