@@ -114,13 +114,25 @@ namespace Project.Runtime.OutGame.Presentation
                     _contents = _contentsParent.GetContents(ContentsType.Question4Open);
                     break;
                 }
+                case ContentsType.QuestionClearSave:
+                {
+                    await SFBWrapper.Save(_contents.Title, _contents.Text);
+                    _contents = _contentsParent.GetContents(ContentsType.QuestionClearOpenFailed);
+                    break;
+                }
                 case ContentsType.Question1Open:
                 case ContentsType.Question2Open:
                 case ContentsType.Question3Open:
                 case ContentsType.Question4Open:
+                case ContentsType.QuestionClearOpenFailed:
                 {
                     await SFBWrapper.Save(_contents.Title, _contents.Text);
                     break;
+                }
+                case ContentsType.QuestionClearOpenSuccess:
+                {
+                    await SFBWrapper.Save(_contents.Title, _contents.Text);
+                    return;
                 }
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -203,6 +215,9 @@ namespace Project.Runtime.OutGame.Presentation
                     var success = await _questionUseCase.OpenAnswerText(_contents.MatchPattern);
                     if (success)
                     {
+                        _contents = _contentsParent.GetContents(ContentsType.QuestionClearSave);
+                        ActiveLetterAsync(state).Forget();
+
                         CustomDebug.Log($"Question4 問題正解。正解画面に遷移。");
                     }
                     else
@@ -210,6 +225,28 @@ namespace Project.Runtime.OutGame.Presentation
                         await (ActiveLetterAsync(state), ActivePostAsync(state));
 
                         CustomDebug.Log($"Question4 問題不正解。再度、問題を解く");
+                    }
+
+                    break;
+                }
+                case ContentsType.QuestionClearOpenFailed:
+                {
+                    var success = await _questionUseCase.OpenAnswerText(_contents.MatchPattern);
+                    if (success)
+                    {
+                        PlayerPrefs.SetInt(PlayerPrefsConst.Int.QuestionProgress, 0);
+
+                        _contents = _contentsParent.GetContents(ContentsType.QuestionClearOpenSuccess);
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
+
+                        CustomDebug.Log($"データリセット");
+                    }
+                    else
+                    {
+                        _contents = _contentsParent.GetContents(ContentsType.QuestionClearOpenFailed);
+                        await (ActiveLetterAsync(state), ActivePostAsync(state));
+
+                        CustomDebug.Log("データリセットしない");
                     }
 
                     break;

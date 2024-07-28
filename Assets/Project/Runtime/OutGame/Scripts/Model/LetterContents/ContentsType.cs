@@ -18,7 +18,11 @@ namespace Project.Runtime.OutGame.Model
         Question3Save,
         Question3Open,
         Question4Save,
-        Question4Open
+        Question4Open,
+
+        QuestionClearSave,
+        QuestionClearOpenSuccess,
+        QuestionClearOpenFailed
     }
 
     public enum ContentsSfbType
