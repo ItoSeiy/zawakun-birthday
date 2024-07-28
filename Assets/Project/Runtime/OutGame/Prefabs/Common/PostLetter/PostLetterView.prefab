@@ -58,6 +58,7 @@ MonoBehaviour:
   _postAudioClip: {fileID: 8300000, guid: ea700a4b187cefd43b31fcc71f4e9466, type: 3}
   _letterAudioClip: {fileID: 8300000, guid: 2f58f45d81ded12449f7d1ffee2e0664, type: 3}
   _bgmAudioSource: {fileID: 822687316769787957}
+  _clearAudioClip: {fileID: 0}
 --- !u!82 &1158473009731788436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -371,6 +372,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8686582372631061505}
     m_Modifications:
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.39657694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39657694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.39657694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165415749574777641, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7181030667971913971, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_Name
       value: Letter
@@ -421,19 +458,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97166073
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2363799
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -445,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 27.346
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -453,6 +490,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7942049305410283754, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029693738754577157, guid: 76ef99f0a50d15348ac3522e5ac3d609, type: 3}
+      propertyPath: _doAnimation
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
