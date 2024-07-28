@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2601303794029502507}
   - component: {fileID: 2153620337485514549}
   - component: {fileID: 3860012852809886684}
+  - component: {fileID: 6272655917978719639}
+  - component: {fileID: 5779100781419784486}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -75,13 +77,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cbcdcb4648a064c4eab2779076bcde50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 376efbda96a3480458ceee392f02f924, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,6 +93,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6272655917978719639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248800695448607920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef13e9cc62a94ee298f9df3f3d2e7096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5779100781419784486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248800695448607920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1a567a5020484fa7e452c16f7b229e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDisabled: 0
+  _longTapTime: 0.5
+  _longTapGesture: {fileID: 6272655917978719639}
+  _doAnimation: 0
+  _buttonAnimationTransform: {fileID: 4391756401369566629}
+  _buttonAnimationPressScale: 0.9
+  _buttonAnimationPressDuration: 0.25
+  _buttonAnimationPressEase: 9
+  _buttonAnimationPullDuration: 0.25
+  _buttonAnimationDefaultScale: 1
+  _buttonAnimationPullEase: 30
 --- !u!1 &6477063859509191980
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -169,7 +206,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5BB6\u306B\u8B0E\u306E\u30A2\u30BF\u30C3\u30B7\u30E5\u30B1\u30FC\u30B9\u304C\u5C4A\u3044\u305F\u5C0F\u6FA4\u306F\r\n\u305D\u3053\u306B\u8A18\u3055\u308C\u3066\u3044\u305F\u4E2D\u5DDE\u306E\u87F9\u5DEE\u6D32\u4EAD\u3092\u8A2A\u308C\u305F"
+  m_Text: 
 --- !u!1 &7654541703406056267
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +218,7 @@ GameObject:
   - component: {fileID: 3766480406305180121}
   - component: {fileID: 1751860538583260131}
   - component: {fileID: 925838594320723313}
+  - component: {fileID: 9067416315860960193}
   m_Layer: 0
   m_Name: pfb_ui_intro_page
   m_TagString: Untagged
@@ -250,8 +288,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd99572ead3c2e14cb4cebf850328788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _introText: {fileID: 0}
-  _textAnim: {fileID: 0}
+  _introButton: {fileID: 5779100781419784486}
+  _introText: {fileID: 4597845043130328994}
+  _textAnim: {fileID: 4709896599446998005}
+  _seAudioSource: {fileID: 9067416315860960193}
+  _textAudioClip: {fileID: 8300000, guid: 4bbdca464f3cd764eaecbc3db97c3c16, type: 3}
+  _postAudioClip: {fileID: 8300000, guid: ea700a4b187cefd43b31fcc71f4e9466, type: 3}
+--- !u!82 &9067416315860960193
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654541703406056267}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8274683394577029345
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +491,7 @@ Animation:
   m_GameObject: {fileID: 8274683394577029345}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 09e5720a9589e754cbad17473ed57f9c, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 09e5720a9589e754cbad17473ed57f9c, type: 2}
   m_WrapMode: 0

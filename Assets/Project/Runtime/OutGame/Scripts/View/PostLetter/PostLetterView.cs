@@ -14,13 +14,27 @@ namespace Project.Runtime.OutGame.View
         [SerializeField]
         private SimpleButton _letter;
 
+        [SerializeField]
+        private AudioSource _seAudioSource;
+
+        [SerializeField]
+        private AudioClip _postAudioClip;
+
+        [SerializeField]
+        private AudioClip _letterAudioClip;
+
+
         protected override UniTask<PostLetterViewState> Setup()
         {
             var state = new PostLetterViewState();
             var iViewState = (ILoginViewState)state;
 
             _post.SetOnClickDestination(() => iViewState.InvokePostClicked());
-            _letter.SetOnClickDestination(() => iViewState.InvokeLetterClicked());
+            _letter.SetOnClickDestination(() =>
+            {
+                _seAudioSource.PlayOneShot(_letterAudioClip);
+                iViewState.InvokeLetterClicked();
+            });
 
             state.IsPostActive.Subscribe(SetPostActive).AddTo(this);
             state.IsLetterActive.Subscribe(SetLetterActive).AddTo(this);
@@ -35,6 +49,11 @@ namespace Project.Runtime.OutGame.View
 
         private void SetLetterActive(bool active)
         {
+            if (active)
+            {
+                _seAudioSource.PlayOneShot(_postAudioClip);
+            }
+
             _letter.gameObject.SetActive(active);
         }
     }
