@@ -33,6 +33,9 @@ namespace Project.Runtime.OutGame.View
         [SerializeField]
         private AudioClip _postAudioClip;
 
+        [SerializeField]
+        private AudioSource _bgmAudioSource;
+
         private int _textIndex = -1;
 
         private IntroViewState _state;
@@ -93,11 +96,21 @@ namespace Project.Runtime.OutGame.View
 
             if (_textIndex >= _textArray.Length)
             {
+                _bgmAudioSource.DOFade(0f, 0.5f)
+                    .OnComplete(() => _bgmAudioSource.Stop());
+
                 _state.InvokeTextFinished();
                 return;
             }
 
-            await UniTask.WaitForSeconds(delay);
+            if (delay != 0f)
+            {
+                _bgmAudioSource.volume = 0f;
+                _bgmAudioSource.DOFade(0.1f, 0.5f);
+                _bgmAudioSource.Play();
+
+                await UniTask.WaitForSeconds(delay);
+            }
 
             if (_textIndex == 3)
             {

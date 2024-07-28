@@ -263,6 +263,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3766480406305180121}
     m_Modifications:
+    - target: {fileID: 822687316769787957, guid: f68a41dc5297ecd4cbab96cc201772c2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ac2a44d02eea2b4ea20c0a819c1711f, type: 3}
     - target: {fileID: 8171243315763490933, guid: f68a41dc5297ecd4cbab96cc201772c2, type: 3}
       propertyPath: m_Name
       value: PostLetterView

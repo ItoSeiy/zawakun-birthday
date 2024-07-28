@@ -1,4 +1,6 @@
+using System;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Project.Framework.Extensions;
 using Project.Framework.OutGame;
 using R3;
@@ -23,6 +25,11 @@ namespace Project.Runtime.OutGame.View
         [SerializeField]
         private AudioClip _letterAudioClip;
 
+        [SerializeField]
+        private AudioSource _bgmAudioSource;
+
+        [SerializeField]
+        private AudioClip _clearAudioClip;
 
         protected override UniTask<PostLetterViewState> Setup()
         {
@@ -38,6 +45,24 @@ namespace Project.Runtime.OutGame.View
 
             state.IsPostActive.Subscribe(SetPostActive).AddTo(this);
             state.IsLetterActive.Subscribe(SetLetterActive).AddTo(this);
+            state.OnChangeBgm.SubscribeAwait(async (_, _) =>
+            {
+                await _bgmAudioSource.DOFade(0, 0.5f);
+
+                _bgmAudioSource.Stop();
+                _bgmAudioSource.clip = _clearAudioClip;
+
+                _bgmAudioSource.DOFade(0.2f, 0.5f);
+                _bgmAudioSource.Play();
+            }).AddTo(this);
+            state.OnFinish.Subscribe(_ =>
+            {
+                _bgmAudioSource.DOFade(0, 0.5f)
+                    .OnComplete(() => _bgmAudioSource.Stop());
+            }).AddTo(this);
+
+            _bgmAudioSource.DOFade(0.1f, 0.5f);
+            _bgmAudioSource.Play();
 
             return UniTask.FromResult(state);
         }
@@ -70,6 +95,17 @@ namespace Project.Runtime.OutGame.View
             _onPostClicked.OnNext(Unit.Default);
         }
 
+        public void InvokeChangeBgm()
+        {
+            _onChangeBgm.OnNext(Unit.Default);
+        }
+
+        public void InvokeFinish()
+        {
+            _onFinish.OnNext(Unit.Default);
+        }
+
+
         public ReactiveProperty<bool> IsLetterActive { get; } = new();
         public ReactiveProperty<bool> IsPostActive { get; } = new();
 
@@ -78,9 +114,15 @@ namespace Project.Runtime.OutGame.View
 
         public Observable<Unit> OnPostClicked => _onPostClicked;
         private readonly Subject<Unit> _onPostClicked = new();
+
+        public Observable<Unit> OnChangeBgm => _onChangeBgm;
+        private readonly Subject<Unit> _onChangeBgm = new();
+
+        public Observable<Unit> OnFinish => _onFinish;
+        private readonly Subject<Unit> _onFinish = new();
     }
 
-    public interface ILoginViewState
+    internal interface ILoginViewState
     {
         void InvokeLetterClicked();
         void InvokePostClicked();

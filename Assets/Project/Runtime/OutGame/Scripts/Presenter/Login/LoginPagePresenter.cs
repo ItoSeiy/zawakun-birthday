@@ -105,6 +105,9 @@ namespace Project.Runtime.OutGame.Presentation
                     var success = await _loginUseCase.OpenLoginCheckText(_contents.MatchPattern);
                     if (success)
                     {
+                        state.InvokeFinish();
+                        await UniTask.WaitForSeconds(0.5f);
+
                         TransitionService.PushQuestionPage();
 
                         CustomDebug.Log($"問題画面へ遷移");

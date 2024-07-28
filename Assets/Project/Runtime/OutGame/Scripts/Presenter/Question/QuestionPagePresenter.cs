@@ -1,6 +1,5 @@
 using System;
 using Cysharp.Threading.Tasks;
-using PlasticGui.WorkspaceWindow.CodeReview.ReviewChanges.Summary;
 using Project.Framework.OutGame;
 using Project.Framework.Utils;
 using Project.Runtime.OutGame.Model;
@@ -215,6 +214,7 @@ namespace Project.Runtime.OutGame.Presentation
                     var success = await _questionUseCase.OpenAnswerText(_contents.MatchPattern);
                     if (success)
                     {
+                        state.InvokeChangeBgm();
                         _contents = _contentsParent.GetContents(ContentsType.QuestionClearSave);
                         ActiveLetterAsync(state).Forget();
 
